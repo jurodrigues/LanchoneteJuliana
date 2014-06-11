@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<h:inputHidden value="#{produtoMb.produto.id}" />
+			<div class="input-group input-group-lg">
+				<h:outputLabel styleClass="input-group-addon" value="Nome" />
+				<h:inputText styleClass="form-control"
+					value="#{produtoMb.produto.nome}" />
+			</div>
+
+			<div class="input-group input-group-lg">
+				<h:outputLabel styleClass="input-group-addon" value="Descricao" />
+				<h:inputText styleClass="form-control"
+					value="#{produtoMb.produto.descricao}" />
+			</div>
+
+			<div class="input-group input-group-lg">
+				<h:outputLabel styleClass="input-group-addon" value="Marca" />
+				<h:inputText styleClass="form-control"
+					value="#{produtoMb.produto.marca}" />
+			</div>
+
+			<div class="input-group input-group-lg">
+				<h:outputLabel styleClass="input-group-addon" value="Valor" />
+				<h:inputText styleClass="form-control"
+					value="#{produtoMb.produto.valor}" />
+			</div>
+			<div class="input-group input-group-lg">
+				<h:outputLabel styleClass="input-group-addon" value="Lanchoente" />
+				<h:selectOneMenu styleClass="form-control" value="#{produtoMb.produto.lanchonete}" >
+					<f:selectItem itemLabel="Selecione uma lanchonete"/>
+					<f:selectItems value="#{lanchoneteMb.lanchonetes}" var="lan"
+					itemLabel="#{lan.nome}" itemValue="#{lan.id}"/>
+				</h:selectOneMenu>
+			</div>
+			
+			<h:commandButton value="Salvar" action="#{produtoMb.salvar}" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

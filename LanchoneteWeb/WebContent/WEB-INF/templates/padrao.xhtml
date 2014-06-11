@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+
+	<title><ui:insert name="titulo">Lanchonete Udson</ui:insert></title>
+</h:head>
+<h:body>
+	<!-- Begin Body -->
+	<div class="container">
+		<div>
+			<h:graphicImage library="img" name="logo.jpg" />
+		</div>
+		<ui:debug hotkey="k" rendered="true" />
+		<ui:param name="view" value="#{facesContext.viewRoot.viewId}" />
+		<ul class="nav nav-tabs nav-justified">
+			<li class="#{view == '/index.xhtml' ? 'active' : ''}"><h:link
+					value="Home" outcome="index" /></li>
+			<li class="#{view == '/cadastrarProduto.xhtml' ? 'active' : ''}"><h:link
+					value="Cadastrar Produto" outcome="cadastrarProduto" /></li>
+			<li class="#{view == '/listaProdutos.xhtml' ? 'active' : ''}"><h:link
+					value="Listar Produtos" outcome="listaProdutos" /></li>
+		</ul>
+		<ui:insert name="conteudo"></ui:insert>
+	</div>
+</h:body>
+
+</html>

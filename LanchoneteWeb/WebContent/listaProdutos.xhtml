@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="WEB-INF/templates/padrao.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<h:dataTable value="#{lanchoneteMb.lanchonetes}" var="lanchonete"
+				styleClass="table">
+				<h:column>
+					<f:facet name="header">Código</f:facet>
+					<h:outputText value="#{lanchonete.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{lanchonete.nome}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{lanchonete.descricao}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Marca</f:facet>
+					<h:outputText value="#{lanchonete.marca}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Valor</f:facet>
+					<h:outputText value="#{lanchonete.valor}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:commandLink action="#{lanchoneteMb.editar(lanchonete.id)}"
+						styleClass="btn">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<h:commandLink action="#{lanchoneteMb.excluir(lanchonete.id)}"
+						styleClass="btn">
+						<span class="glyphicon glyphicon-trash"></span>
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+		<h:panelGrid rendered="#{empty lanchoneteMb.lanchonetes}">
+		Sem registros
+		</h:panelGrid>
+		<ui:include src="WEB-INF/templates/logo.xhtml"></ui:include>
+	</ui:define>
+</ui:composition>
+</html>
